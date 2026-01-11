@@ -4,32 +4,37 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.time.LocalDate;
-import java.util.Objects;
+import java.util.*;
 
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class Appointment {
+public class Doctor {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private LocalDate appointmentDate;
+    @Column(nullable = false, length = 50)
+    private String name;
 
-    @Column(length = 500)
-    private String reason;
+    @Column(length = 100)
+    private String specilization;
 
-    @ManyToOne
-    @JoinColumn(name="patient_id", nullable = false)
-    private Patient patient;
+    @Column(nullable = false, length = 100, unique = true)
+    private String email;
+//
+//    @OneToMany(mappedBy = "doctor")
+//    private List<Appointment> patients;
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Doctor doctor;
+
+    @ManyToMany(mappedBy = "doctors")
+    private Set<Department> departments = new HashSet<>();
+
+    @OneToMany(mappedBy = "doctor")
+    private List<Appointment> appointments = new ArrayList<>();
 
     @Override
     public final boolean equals(Object o) {
@@ -38,8 +43,8 @@ public class Appointment {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Appointment that = (Appointment) o;
-        return getId() != null && Objects.equals(getId(), that.getId());
+        Doctor doctor = (Doctor) o;
+        return getId() != null && Objects.equals(getId(), doctor.getId());
     }
 
     @Override
