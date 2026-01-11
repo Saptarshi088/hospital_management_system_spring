@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,5 +21,6 @@ public class PatientDto {
     private String gender;
     private BloodGroupType bloodGroup;
     private Long insurance_id;
+    private List<AppointmentDto> appointments;
 
 }
