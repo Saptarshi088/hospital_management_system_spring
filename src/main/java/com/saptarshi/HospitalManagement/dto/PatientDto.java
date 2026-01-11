@@ -22,5 +22,4 @@ public class PatientDto {
     private BloodGroupType bloodGroup;
     private Long insurance_id;
     private List<AppointmentDto> appointments;
-
 }
