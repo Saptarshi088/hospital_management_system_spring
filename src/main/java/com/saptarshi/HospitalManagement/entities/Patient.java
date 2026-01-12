@@ -50,9 +50,10 @@ public class Patient {
     @Enumerated(EnumType.STRING)
     private BloodGroupType bloodGroup;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Insurance insurance;
 
     @OneToMany(mappedBy = "patient")
+    @ToString.Exclude
     private List<Appointment>appointments;
 }

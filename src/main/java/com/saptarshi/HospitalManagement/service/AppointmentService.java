@@ -1,14 +1,11 @@
 package com.saptarshi.HospitalManagement.service;
 
-import com.saptarshi.HospitalManagement.dto.AppointmentDto;
 import com.saptarshi.HospitalManagement.dto.AppointmentResponseDto;
-import com.saptarshi.HospitalManagement.entities.Appointment;
 import com.saptarshi.HospitalManagement.mapper.AppointMapper;
 import com.saptarshi.HospitalManagement.repository.AppointmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
