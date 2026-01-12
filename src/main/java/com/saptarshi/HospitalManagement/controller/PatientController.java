@@ -1,15 +1,16 @@
 package com.saptarshi.HospitalManagement.controller;
 
 
+import com.saptarshi.HospitalManagement.dto.AdmitPatientRequest;
 import com.saptarshi.HospitalManagement.dto.PatientAppointmentDto;
 import com.saptarshi.HospitalManagement.dto.PatientDto;
 import com.saptarshi.HospitalManagement.service.PatientService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -33,5 +34,14 @@ public class PatientController {
     @GetMapping("/appointment/{id}")
     public List<PatientAppointmentDto> getPatientAppointments(@PathVariable Long id) {
         return patientService.findPatientAppointments(id);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> admitPatient(@RequestBody AdmitPatientRequest request, UriComponentsBuilder uriBuilder){
+        var patient = patientService.admitPatient(request);
+        if(patient==null)
+            return new ResponseEntity<>("Conflict", HttpStatus.CONFLICT);
+        var uri = uriBuilder.path("/patient/{id}").buildAndExpand(patient.getId()).toUri();
+        return ResponseEntity.created(uri).body(patient);
     }
 }
