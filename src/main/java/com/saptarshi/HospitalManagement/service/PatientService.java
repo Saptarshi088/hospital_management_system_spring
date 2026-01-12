@@ -1,6 +1,5 @@
 package com.saptarshi.HospitalManagement.service;
 
-import com.saptarshi.HospitalManagement.dto.AppointmentDto;
 import com.saptarshi.HospitalManagement.dto.PatientAppointmentDto;
 import com.saptarshi.HospitalManagement.dto.PatientDto;
 import com.saptarshi.HospitalManagement.mapper.AppointMapper;

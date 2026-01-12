@@ -2,6 +2,7 @@ package com.saptarshi.HospitalManagement.mapper;
 
 import com.saptarshi.HospitalManagement.dto.PatientAppointmentDto;
 import com.saptarshi.HospitalManagement.dto.PatientDto;
+import com.saptarshi.HospitalManagement.dto.PatientInAppointmentResponseDto;
 import com.saptarshi.HospitalManagement.entities.Appointment;
 import com.saptarshi.HospitalManagement.entities.Patient;
 import org.mapstruct.Mapper;
@@ -14,4 +15,6 @@ public interface PatientMapper {
 
     @Mapping(source = "doctor.id",target = "doctor_id")
     PatientAppointmentDto toPatientAppointDto(Appointment appointment);
+
+    PatientInAppointmentResponseDto toPatientInAppointmentDto(Patient patient);
 }
