@@ -1,13 +1,10 @@
 package com.saptarshi.HospitalManagement.controller;
 
 
-import com.saptarshi.HospitalManagement.dto.AdmitPatientRequest;
-import com.saptarshi.HospitalManagement.dto.PatientAppointmentDto;
-import com.saptarshi.HospitalManagement.dto.PatientDto;
+import com.saptarshi.HospitalManagement.dto.*;
 import com.saptarshi.HospitalManagement.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -44,4 +41,5 @@ public class PatientController {
         var uri = uriBuilder.path("/patient/{id}").buildAndExpand(patient.getId()).toUri();
         return ResponseEntity.created(uri).body(patient);
     }
+
 }

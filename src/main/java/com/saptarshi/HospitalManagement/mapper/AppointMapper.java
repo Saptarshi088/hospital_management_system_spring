@@ -2,7 +2,9 @@ package com.saptarshi.HospitalManagement.mapper;
 
 import com.saptarshi.HospitalManagement.dto.AppointmentDto;
 import com.saptarshi.HospitalManagement.dto.AppointmentResponseDto;
+import com.saptarshi.HospitalManagement.dto.SetAppointMentForPatientRequest;
 import com.saptarshi.HospitalManagement.entities.Appointment;
+import com.saptarshi.HospitalManagement.repository.AppointmentRepository;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -13,4 +15,7 @@ public interface AppointMapper {
     @Mapping(source="doctor",target = "doctor")
     @Mapping(source = "patient",target = "patient")
     AppointmentResponseDto toResponseDto(Appointment appointment);
+    Appointment toEntity(AppointmentRepository appointmentRepository);
+
+    Appointment setAppointPatient(SetAppointMentForPatientRequest setAppointMentForPatientRequest);
 }
