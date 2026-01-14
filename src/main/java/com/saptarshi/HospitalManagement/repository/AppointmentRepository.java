@@ -1,7 +1,5 @@
 package com.saptarshi.HospitalManagement.repository;
 
-import com.saptarshi.HospitalManagement.dto.AppointmentDto;
-import com.saptarshi.HospitalManagement.dto.AppointmentResponseDto;
 import com.saptarshi.HospitalManagement.entities.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

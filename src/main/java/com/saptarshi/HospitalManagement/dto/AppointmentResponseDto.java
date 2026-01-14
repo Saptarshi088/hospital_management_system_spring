@@ -1,8 +1,5 @@
 package com.saptarshi.HospitalManagement.dto;
 
-import com.saptarshi.HospitalManagement.entities.Doctor;
-import com.saptarshi.HospitalManagement.entities.Patient;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

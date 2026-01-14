@@ -1,7 +1,6 @@
 package com.saptarshi.HospitalManagement.service;
 
 import com.saptarshi.HospitalManagement.dto.AppointmentResponseDto;
-import com.saptarshi.HospitalManagement.entities.Appointment;
 import com.saptarshi.HospitalManagement.mapper.AppointMapper;
 import com.saptarshi.HospitalManagement.repository.AppointmentRepository;
 import lombok.RequiredArgsConstructor;

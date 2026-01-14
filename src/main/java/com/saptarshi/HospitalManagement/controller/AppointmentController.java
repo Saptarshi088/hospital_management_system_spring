@@ -2,7 +2,6 @@ package com.saptarshi.HospitalManagement.controller;
 
 import com.saptarshi.HospitalManagement.dto.AppointmentResponseDto;
 import com.saptarshi.HospitalManagement.service.AppointmentService;
-import com.saptarshi.HospitalManagement.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +17,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AppointmentController {
     private final AppointmentService appointmentService;
-    private final PatientService patientService;
 
     @GetMapping
     public List<AppointmentResponseDto> getAppointments() {
@@ -31,7 +29,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/date/{localDate}")
-    public List<AppointmentResponseDto> getAppointmentByDate(@PathVariable LocalDate localDate){
+    public List<AppointmentResponseDto> getAppointmentByDate(@PathVariable LocalDate localDate) {
         return appointmentService.getAppointmentByDate(localDate);
     }
 }

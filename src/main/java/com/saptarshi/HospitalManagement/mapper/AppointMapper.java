@@ -11,9 +11,11 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface AppointMapper {
     AppointmentDto toDto(Appointment appointment);
-    @Mapping(source="doctor",target = "doctor")
-    @Mapping(source = "patient",target = "patient")
+
+    @Mapping(source = "doctor", target = "doctor")
+    @Mapping(source = "patient", target = "patient")
     AppointmentResponseDto toResponseDto(Appointment appointment);
+
     Appointment toEntity(AppointmentRepository appointmentRepository);
 
 }

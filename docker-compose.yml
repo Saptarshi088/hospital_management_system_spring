@@ -14,7 +14,7 @@ services:
     networks:
       - hospital-net
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U root -d hospital_management"]
+      test: [ "CMD-SHELL", "pg_isready -U root -d hospital_management" ]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -36,7 +36,7 @@ services:
       db:
         condition: service_healthy
     # Ensure the app starts using the correct shell form to handle the JAR
-    command: ["java", "-jar", "/app/HospitalManagement-0.0.1-SNAPSHOT.jar"]
+    command: [ "java", "-jar", "/app/HospitalManagement-0.0.1-SNAPSHOT.jar" ]
 
 networks:
   hospital-net:

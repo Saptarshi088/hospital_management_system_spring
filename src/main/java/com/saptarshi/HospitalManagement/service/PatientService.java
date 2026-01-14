@@ -1,8 +1,9 @@
 package com.saptarshi.HospitalManagement.service;
 
-import com.saptarshi.HospitalManagement.dto.*;
-import com.saptarshi.HospitalManagement.entities.Appointment;
-import com.saptarshi.HospitalManagement.entities.Insurance;
+import com.saptarshi.HospitalManagement.dto.AdmitPatientInsuranceDto;
+import com.saptarshi.HospitalManagement.dto.AdmitPatientRequest;
+import com.saptarshi.HospitalManagement.dto.PatientAppointmentDto;
+import com.saptarshi.HospitalManagement.dto.PatientDto;
 import com.saptarshi.HospitalManagement.entities.Patient;
 import com.saptarshi.HospitalManagement.exceptions.DuplicateInsurancePolicyException;
 import com.saptarshi.HospitalManagement.mapper.AppointMapper;
@@ -14,9 +15,7 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -26,7 +25,7 @@ public class PatientService {
     private final PatientRepository patientRepository;
     private final PatientMapper patientMapper;
     private final AppointmentRepository appointmentRepository;
-    private final AppointMapper  appointMapper;
+    private final AppointMapper appointMapper;
     private final InsuranceRepository insuranceRepository;
 
     @Transactional

@@ -55,5 +55,5 @@ public class Patient {
 
     @OneToMany(mappedBy = "patient")
     @ToString.Exclude
-    private List<Appointment>appointments;
+    private List<Appointment> appointments;
 }

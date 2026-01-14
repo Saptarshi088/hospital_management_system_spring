@@ -9,12 +9,12 @@ import com.saptarshi.HospitalManagement.entities.Patient;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring",uses = InsuranceMapper.class)
+@Mapper(componentModel = "spring", uses = InsuranceMapper.class)
 public interface PatientMapper {
-    @Mapping(source="insurance.id", target = "insurance_id")
+    @Mapping(source = "insurance.id", target = "insurance_id")
     PatientDto toDto(Patient patient);
 
-    @Mapping(source = "doctor.id",target = "doctor_id")
+    @Mapping(source = "doctor.id", target = "doctor_id")
     PatientAppointmentDto toPatientAppointDto(Appointment appointment);
 
     PatientInAppointmentResponseDto toPatientInAppointmentDto(Patient patient);

@@ -1,6 +1,7 @@
 # 🏥 Hospital Management System
 
-A production-ready Hospital Management System built with Spring Boot and PostgreSQL. Designed for real-world healthcare operations with a focus on data integrity, audit trails, and scalability.
+A production-ready Hospital Management System built with Spring Boot and PostgreSQL. Designed for real-world healthcare
+operations with a focus on data integrity, audit trails, and scalability.
 
 [![Repository Size](https://img.shields.io/github/repo-size/Saptarshi088/hospital_management_system_spring)](https://github.com/Saptarshi088/hospital_management_system_spring)
 [![Languages](https://img.shields.io/github/languages/top/Saptarshi088/hospital_management_system_spring)](https://github.com/Saptarshi088/hospital_management_system_spring)
@@ -83,18 +84,21 @@ server:
 ### 4. Run the Application
 
 **Using Maven:**
+
 ```bash
 ./mvnw clean package
 ./mvnw spring-boot:run
 ```
 
 **Using Gradle:**
+
 ```bash
 ./gradlew clean build
 ./gradlew bootRun
 ```
 
 **Or run the JAR directly:**
+
 ```bash
 java -jar target/hms-*.jar
 ```
@@ -115,6 +119,7 @@ docker-compose up --build
 ```
 
 This will start:
+
 - PostgreSQL database on port `5432`
 - Spring Boot application on port `8080`
 
@@ -155,15 +160,15 @@ volumes:
 
 ### Tech Stack
 
-| Component | Technology |
-|-----------|-----------|
-| Backend Framework | Spring Boot (Java 17+) |
-| Database | PostgreSQL 12+ |
-| Database Logic | PL/pgSQL (stored procedures, triggers) |
-| Build Tool | Maven / Gradle |
-| Containerization | Docker & Docker Compose |
-| Testing | JUnit, Spring Test |
-| API Documentation | Swagger / OpenAPI |
+| Component         | Technology                             |
+|-------------------|----------------------------------------|
+| Backend Framework | Spring Boot (Java 17+)                 |
+| Database          | PostgreSQL 12+                         |
+| Database Logic    | PL/pgSQL (stored procedures, triggers) |
+| Build Tool        | Maven / Gradle                         |
+| Containerization  | Docker & Docker Compose                |
+| Testing           | JUnit, Spring Test                     |
+| API Documentation | Swagger / OpenAPI                      |
 
 ### Project Structure
 
@@ -216,6 +221,7 @@ spring:
 ### Example Migration
 
 **Idempotent Function:**
+
 ```sql
 CREATE OR REPLACE FUNCTION public.log_patient_change()
 RETURNS trigger AS $$
@@ -228,6 +234,7 @@ $$ LANGUAGE plpgsql;
 ```
 
 **Trigger:**
+
 ```sql
 CREATE TRIGGER trg_patient_audit
 AFTER INSERT OR UPDATE ON public.patient
@@ -337,23 +344,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ---
 
-## 📝 License
-
-This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
-
----
-
-## 💬 Support
-
-- **Bug Reports**: [GitHub Issues](https://github.com/Saptarshi088/hospital_management_system_spring/issues)
-- **Questions**: Open a discussion in the repository
-- **Commercial Support**: Contact via repository
-
----
 
 ## 🙏 Acknowledgements
 
 Built with ❤️ using:
+
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [PostgreSQL](https://www.postgresql.org/)
 - Inspired by best practices in healthcare software development
@@ -369,4 +364,5 @@ Built with ❤️ using:
 
 ---
 
-**Made with Spring and PostgreSQL** | [Report Bug](https://github.com/Saptarshi088/hospital_management_system_spring/issues) | [Request Feature](https://github.com/Saptarshi088/hospital_management_system_spring/issues)
+**Made with Spring and PostgreSQL
+** | [Report Bug](https://github.com/Saptarshi088/hospital_management_system_spring/issues) | [Request Feature](https://github.com/Saptarshi088/hospital_management_system_spring/issues)
