@@ -340,7 +340,7 @@ We welcome contributions! Please follow these steps:
 5. **Push** to your fork: `git push origin feat/awesome-feature`
 6. **Open a Pull Request** with a clear description
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
 
 ---
 
