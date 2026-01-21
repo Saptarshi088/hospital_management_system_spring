@@ -1,22 +1,24 @@
 package com.saptarshi.HospitalManagement.controller;
 
-import com.saptarshi.HospitalManagement.service.JwrService;
-import io.jsonwebtoken.Jwts;
+import com.saptarshi.HospitalManagement.service.JwtService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final JwrService jwrService;
+    private final JwtService jwtService;
 
     @PostMapping("/login")
     public String getJwt(@RequestBody String username){
-        return jwrService.GenerateToken(username);
+        return jwtService.GenerateToken(username);
+    }
+
+    @PostMapping("/validate")
+    public Boolean validateToken(@RequestHeader("Authorization") String token){
+        token = token.replace("Bearer ","");
+        return jwtService.validateToken(token);
     }
 }
