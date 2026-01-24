@@ -1,5 +1,6 @@
 package com.saptarshi.HospitalManagement.service;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,12 +24,20 @@ public class JwtService {
     }
 
     public Boolean validateToken(String token){
+        return getPayload(token)
+                .getExpiration().after(new Date());
+    }
+
+    private Claims getPayload(String token) {
         return Jwts
                 .parser()
                 .verifyWith(Keys.hmacShaKeyFor(secret.getBytes()))
                 .build()
                 .parseSignedClaims(token)
-                .getPayload()
-                .getExpiration().after(new Date());
+                .getPayload();
+    }
+
+    public String getUserName(String token){
+        return getPayload(token).getSubject();
     }
 }
