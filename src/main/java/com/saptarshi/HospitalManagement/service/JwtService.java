@@ -6,10 +6,14 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.util.Date;
 
 @Service
 public class JwtService {
+
+    private static final Duration TOKEN_TTL = Duration.ofHours(1);
 
     @Value("${jwt.secret}")
     private String secret;
@@ -17,9 +21,9 @@ public class JwtService {
     public String GenerateToken(String userName){
         return Jwts.builder()
                 .subject(userName)
-                .signWith(Keys.hmacShaKeyFor(secret.getBytes()))
+                .signWith(Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8)))
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 600000))
+                .expiration(new Date(System.currentTimeMillis() + TOKEN_TTL.toMillis()))
                 .compact();
     }
 
@@ -31,7 +35,7 @@ public class JwtService {
     private Claims getPayload(String token) {
         return Jwts
                 .parser()
-                .verifyWith(Keys.hmacShaKeyFor(secret.getBytes()))
+                .verifyWith(Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8)))
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();

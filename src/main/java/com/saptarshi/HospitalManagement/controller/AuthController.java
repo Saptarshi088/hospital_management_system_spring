@@ -3,6 +3,7 @@ package com.saptarshi.HospitalManagement.controller;
 import com.saptarshi.HospitalManagement.dto.JwtResponse;
 import com.saptarshi.HospitalManagement.dto.LoginRequest;
 import com.saptarshi.HospitalManagement.service.JwtService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,7 +19,7 @@ public class AuthController {
     private final AuthenticationManager authManager;
 
     @PostMapping("/login")
-    public ResponseEntity<JwtResponse> getJwt(@RequestBody LoginRequest request){
+    public ResponseEntity<JwtResponse> getJwt(@Valid @RequestBody LoginRequest request){
         authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),

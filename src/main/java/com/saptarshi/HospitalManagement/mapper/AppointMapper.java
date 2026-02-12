@@ -16,6 +16,6 @@ public interface AppointMapper {
     @Mapping(source = "patient", target = "patient")
     AppointmentResponseDto toResponseDto(Appointment appointment);
 
-    Appointment toEntity(AppointmentRepository appointmentRepository);
+    Appointment toEntity(AppointmentDto dto);
 
 }

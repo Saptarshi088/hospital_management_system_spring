@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @AllArgsConstructor
-public class AdmitPatientRequest {
+public class PatientUpdateRequest {
 
     @NotBlank
     private String name;

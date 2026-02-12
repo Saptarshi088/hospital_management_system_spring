@@ -2,6 +2,7 @@ package com.saptarshi.HospitalManagement.entities;
 
 import com.saptarshi.HospitalManagement.type.Role;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,9 +15,11 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @NotBlank
+    @Column(unique = true, nullable = false, length = 120)
     private String username; // email
 
+    @NotBlank
     @Column(nullable = false)
     private String password;
 

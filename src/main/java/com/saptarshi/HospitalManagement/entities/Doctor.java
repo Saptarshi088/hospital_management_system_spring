@@ -1,6 +1,9 @@
 package com.saptarshi.HospitalManagement.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -20,13 +23,18 @@ public class Doctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(max = 50)
     @Column(nullable = false, length = 50)
     private String name;
 
+    @Size(max = 100)
     @Column(length = 100)
     private String specilization;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Email
+    @NotBlank
+    @Column(nullable = false, length = 120, unique = true)
     private String email;
 //
 //    @OneToMany(mappedBy = "doctor")

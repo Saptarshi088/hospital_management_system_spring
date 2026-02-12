@@ -1,6 +1,9 @@
 package com.saptarshi.HospitalManagement.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -21,12 +24,17 @@ public class Insurance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(max = 50)
     @Column(nullable = false, unique = true, length = 50)
     private String policyNumber;
 
+    @NotBlank
+    @Size(max = 100)
     @Column(nullable = false, length = 100)
     private String provider;
 
+    @Future
     @Column(nullable = false)
     private LocalDate validUntil;
 

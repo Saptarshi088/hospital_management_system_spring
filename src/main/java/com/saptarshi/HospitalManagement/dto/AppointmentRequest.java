@@ -1,6 +1,6 @@
 package com.saptarshi.HospitalManagement.dto;
 
-import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -12,15 +12,18 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @AllArgsConstructor
-public class AdmitPatientInsuranceDto {
-    @NotBlank
-    private String provider;
-
-    @NotBlank
-    private String policyNumber;
+public class AppointmentRequest {
 
     @NotNull
-    @Future
-    private LocalDate validUntil;
+    @FutureOrPresent
+    private LocalDate appointmentDate;
 
+    @NotBlank
+    private String reason;
+
+    @NotNull
+    private Long patientId;
+
+    @NotNull
+    private Long doctorId;
 }

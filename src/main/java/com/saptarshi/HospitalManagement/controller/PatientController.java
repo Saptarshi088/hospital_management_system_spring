@@ -4,7 +4,9 @@ package com.saptarshi.HospitalManagement.controller;
 import com.saptarshi.HospitalManagement.dto.AdmitPatientRequest;
 import com.saptarshi.HospitalManagement.dto.PatientAppointmentDto;
 import com.saptarshi.HospitalManagement.dto.PatientDto;
+import com.saptarshi.HospitalManagement.dto.PatientUpdateRequest;
 import com.saptarshi.HospitalManagement.service.PatientService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,12 +38,22 @@ public class PatientController {
     }
 
     @PostMapping
-    public ResponseEntity<?> admitPatient(@RequestBody AdmitPatientRequest request, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<?> admitPatient(@Valid @RequestBody AdmitPatientRequest request, UriComponentsBuilder uriBuilder) {
         var patient = patientService.admitPatient(request);
         if (patient == null)
             return new ResponseEntity<>("Conflict", HttpStatus.CONFLICT);
         var uri = uriBuilder.path("/patient/{id}").buildAndExpand(patient.getId()).toUri();
         return ResponseEntity.created(uri).body(patient);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PatientDto> update(@PathVariable Long id, @Valid @RequestBody PatientUpdateRequest request) {
+        return patientService.updatePatient(id, request);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        return patientService.deletePatient(id);
     }
 
 }
